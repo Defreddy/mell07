@@ -19,6 +19,9 @@ Mello is a simple Trello-like web application written in Laravel. This example a
 # Start the app locally
 ./vendor/bin/sail up
 
+# Run the database migrations
+./vendor/bin/sail artisan migrate
+
 # Compile assets
 ./vendor/bin/sail npm run dev
 
