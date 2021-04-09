@@ -28,7 +28,7 @@ Mello is a simple Trello-like web application written in Laravel. This example a
 
 ## Deployment
 
-- For the system requirements to run Laravel applications, check [this article](https://laravel.com/docs/8.x/deployment).
+For the system requirements to run Laravel applications, check [this article](https://laravel.com/docs/8.x/deployment).
 
 ## Other resources
 
