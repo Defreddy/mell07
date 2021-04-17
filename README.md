@@ -15,18 +15,39 @@ Mello is a simple Trello-like web application written in Laravel. This example a
 - Install Docker Desktop
 - On Windows, install WSL2, as described [here](https://laravel.com/docs/8.x/installation#getting-started-on-windows)
 
+The first time you're setting up this app, do the following:
+
 ```
-# Start the app locally
+# First time: install sail composer
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/opt \
+    -w /opt \
+    laravelsail/php80-composer:latest composer install --ignore-platform-reqs
+
+# Create a .env file from .env.example
+cp .env.example .env
+
+# Start sail
 ./vendor/bin/sail up
 
-# Run the database migrations
-./vendor/bin/sail artisan migrate
+# Install npm packages
+./vendor/bin/sail npm install
 
 # Compile assets
 ./vendor/bin/sail npm run dev
 
 # Compile assets and minify
 ./vendor/bin/sail npm run prod
+
+# Run the database migrations
+./vendor/bin/sail artisan migrate
+```
+
+The times after that, you can start the app by simply starting sail:
+
+```
+./vendor/bin/sail up
 ```
 
 ## Deployment
