@@ -28,8 +28,8 @@ docker run --rm \
 # Create a .env file from .env.example
 cp .env.example .env
 
-# Start sail
-./vendor/bin/sail up
+# Start sail (detached)
+./vendor/bin/sail up -d
 
 # Install npm packages
 ./vendor/bin/sail npm install
@@ -48,6 +48,21 @@ The times after that, you can start the app by simply starting sail:
 
 ```
 ./vendor/bin/sail up
+```
+
+### Troubleshooting
+
+If the migrations fail because the database user supposedly does not have access to the database, try the following:
+
+```
+# Stop all containers, also removing the volumes
+./vendor/bin/sail down -v
+
+# Spin up all containers again
+./vendor/bin/sail up -d
+
+# Rerun the migrations
+./vendor/bin/sail artisan migrate
 ```
 
 ## Deployment
