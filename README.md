@@ -1,6 +1,6 @@
 ## Mello
 
-Mello is a simple Trello-like web application written in Laravel. This example application should be deployable to the hosting solution that is designed and developed throughout the Project Hosting course (thaught at Thomas More in Geel).
+Mello is a simple Trello-like web application written in Laravel. This example application should be deployable to the hosting solution that is designed and developed throughout the Project Hosting course (taught at Thomas More in Geel).
 
 ![Mello Screenshot](docs/mello_screenshot.png)
 
