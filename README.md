@@ -12,7 +12,7 @@ Mello is a simple Trello-like web application written in Laravel. This example a
 
 ## Getting started (local development)
 
-- On Linux, install [Docker](https://www.docker.com/).
+- On Linux, install [Docker](https://www.docker.com/), [ensure you can run docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user), and [install docker-compose](https://docs.docker.com/compose/install/).
 - On Mac or Windows, install [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - On Windows, install WSL2 as described [here](https://laravel.com/docs/8.x/installation#getting-started-on-windows)
 
@@ -32,6 +32,9 @@ cp .env.example .env
 # Start sail (detached)
 ./vendor/bin/sail up -d
 
+# Add an app key to .env
+./vendor/bin/sail artisan key:generate
+
 # Install npm packages
 ./vendor/bin/sail npm install
 
@@ -48,7 +51,7 @@ cp .env.example .env
 The times after that, you can start the app for local development by simply starting sail:
 
 ```
-./vendor/bin/sail up
+./vendor/bin/sail up -d
 ```
 
 ### Troubleshooting
@@ -69,7 +72,7 @@ If the migrations fail because the database user supposedly does not have access
 ## Deployment
 
 The instructions above are for running the app **locally** - on your own computer - using Laravel Sail to manage the Docker containers.
-When you want to deploy this app to a self-managed server and make it available through a web server, you should not use Laravel Sail.
+When you want to deploy this app to a self-managed server and make it available through a web server, you should not use Laravel Sail. Laravel Sail is not built for serving PHP applications in production.
 
 - For the system requirements to run Laravel applications on a server, check [this article](https://laravel.com/docs/8.x/deployment).
 - For a step-by-step guide on how to actually run the application code on the server, check [this article](https://laraveldaily.com/how-to-deploy-laravel-projects-to-live-server-the-ultimate-guide/). Important notes:
