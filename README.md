@@ -10,15 +10,16 @@ Mello is a simple Trello-like web application written in Laravel. This example a
 - MySQL version 8.0
 - Laravel version 8.35.1
 
-## Getting started
+## Getting started (local development)
 
-- Install Docker Desktop
-- On Windows, install WSL2, as described [here](https://laravel.com/docs/8.x/installation#getting-started-on-windows)
+- On Linux, install [Docker](https://www.docker.com/).
+- On Mac or Windows, install [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- On Windows, install WSL2 as described [here](https://laravel.com/docs/8.x/installation#getting-started-on-windows)
 
-The first time you're setting up this app, do the following:
+The first time you're setting up this app, execute the following in a (WSL2) terminal:
 
 ```
-# First time: install sail composer
+# First time: install dependencies (including sail)
 docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v $(pwd):/opt \
@@ -34,17 +35,17 @@ cp .env.example .env
 # Install npm packages
 ./vendor/bin/sail npm install
 
-# Compile assets
+# Compile assets for dev (through mix)
 ./vendor/bin/sail npm run dev
 
-# Compile assets and minify
+# Compile assets and minify for prod (through mix)
 ./vendor/bin/sail npm run prod
 
 # Run the database migrations
 ./vendor/bin/sail artisan migrate
 ```
 
-The times after that, you can start the app by simply starting sail:
+The times after that, you can start the app for local development by simply starting sail:
 
 ```
 ./vendor/bin/sail up
@@ -67,8 +68,18 @@ If the migrations fail because the database user supposedly does not have access
 
 ## Deployment
 
-For the system requirements to run Laravel applications, check [this article](https://laravel.com/docs/8.x/deployment).
+The instructions above are for running the app **locally** - on your own computer - using Laravel Sail to manage the Docker containers.
+When you want to deploy this app to a self-managed server and make it available through a web server, you should not use Laravel Sail.
+
+- For the system requirements to run Laravel applications on a server, check [this article](https://laravel.com/docs/8.x/deployment).
+- For a step-by-step guide on how to actually run the application code on the server, check [this article](https://laraveldaily.com/how-to-deploy-laravel-projects-to-live-server-the-ultimate-guide/). Important notes:
+    + The article is from October 2018, so things may have slightly changed.
+    + The article uses an NGINX web server. You can also use an Apache web server.
+    + The article suggests to `git clone` the repository onto your web server, so you're not putting files that are ignored through `.gitignore` on the web server (installed PHP and NPM packages, sensitive environment files, etc.). However, you don't _have_ to use this approach. You can also use `scp` or `ftp`, but make sure you only put necessary files on the server.
+    + Make sure that the server contains compiled JS and CSS assets.
 
 ## Other resources
 
-[Laravel's documentation](https://laravel.com/docs/8.x) is excellent.
+- [Laravel's documentation](https://laravel.com/docs/8.x) is excellent.
+- [Laravel Sail](https://laravel.com/docs/8.x/sail) is used to install dependencies, run migrations, run the app, etc for local development.
+- [Laravel Mix](https://laravel.com/docs/8.x/mix) is used to compile CSS and JS.
