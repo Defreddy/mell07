@@ -86,3 +86,4 @@ When you want to deploy this app to a self-managed server and make it available 
 - [Laravel's documentation](https://laravel.com/docs/8.x) is excellent.
 - [Laravel Sail](https://laravel.com/docs/8.x/sail) is used to install dependencies, run migrations, run the app, etc for local development.
 - [Laravel Mix](https://laravel.com/docs/8.x/mix) is used to compile CSS and JS.
+# mell07
